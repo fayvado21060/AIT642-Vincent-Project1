@@ -64,6 +64,31 @@ public class MainSection {
     Double ipBUO;
     Double ipHerb;
     
+    /* Sets up and Initializes output variables  */
+    
+    Double opDryFact;
+    Double opFineFuelMoist;
+    Double opAdjFuelMoist;
+    Double opGrassSpreadIndex;
+    Double opTimberSpredIndex;
+    Double opFireLoadRate;
+    Double opBuildUpIndex;
+    
+    opFineFuelMoist = 99.0;
+    opAdjFuelMoist = 99.0;
+    opDryFact = 0.0;
+    opFireLoadRate = 0.0;
+    
+    System.out.println("Fine Fuel Moisture: " + opFineFuelMoist);
+    System.out.println("Adjusted Fuel Moisture: " + opAdjFuelMoist);
+    System.out.println("Drying Factor: "  + opDryFact);
+    System.out.println("Fire Load Rating: " + opFireLoadRate);
+    
+    
+    
+    	
+        
+    
     /* Gets the input data from the users */
     
     Scanner ip = new Scanner(System.in);
@@ -106,6 +131,11 @@ public class MainSection {
     ipHerb = ip.nextDouble();
     System .out.println("You entered " + ipHerb + " for the Current Herb State");
     System.out.println();
+    
+    /* closes ip. scanner once all input is obtained */
+    
+      ip.close();
+    
     
     
     
