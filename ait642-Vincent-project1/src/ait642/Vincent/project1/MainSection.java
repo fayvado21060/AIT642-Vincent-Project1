@@ -9,6 +9,8 @@ package ait642.Vincent.project1;
  */
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class MainSection {
 	
@@ -53,6 +55,67 @@ public class MainSection {
 	System.out.println(cTableValues.get(2));
 	System.out.println(dTableValues.get(3));
 
+	/*  Sets up variables for inputs  */
+	
+    Double ipDry;
+    Double ipWet;
+    Double ipISnow;
+    Double ipWind;
+    Double ipBUO;
+    Double ipHerb;
+    
+    /* Gets the input data from the users */
+    
+    Scanner ip = new Scanner(System.in);
+    
+    System.out.println("Enter Dry Bulb Temperature");
+    System.out.println();
+    ipDry = ip.nextDouble();
+    System .out.println("You entered " + ipDry + " for the Dry Bulb Temperature");
+    System.out.println();
+    
+    
+    System.out.println("Enter the Wet Bulb  Temperature");
+    System.out.println();
+    ipWet = ip.nextDouble();
+    System .out.println("You entered " + ipWet + " for the Wet Bulb Temperature");
+    System.out.println();
+    
+    System.out.println("Enter the Amount of Inches of Snow");
+    System.out.println();
+    ipISnow = ip.nextDouble();
+    System .out.println("You entered " + ipISnow + " for the amount of inches of snow");
+    System.out.println();
+    
+    
+    System.out.println("Enter the Wind Speed");
+    System.out.println();
+    ipWind = ip.nextDouble();
+    System .out.println("You entered " + ipWind + " for the Wind Speed");
+    System.out.println();
+    
+    System.out.println("Enter the Last Value of the Build Up Index");
+    System.out.println();
+    ipBUO = ip.nextDouble();
+    System .out.println("You entered " + ipBUO + " for the Last Value of the Build Up Index");
+    System.out.println();
+    
+    System.out.println("Enter the Current Herb State");
+    System.out.println("1=Cured or 2=Transition or 3=Green");
+    System.out.println();
+    ipHerb = ip.nextDouble();
+    System .out.println("You entered " + ipHerb + " for the Current Herb State");
+    System.out.println();
+    
+    
+    
+    
+    
+    
+	
+	
+	
+	
 	}
 }
 
