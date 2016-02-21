@@ -84,11 +84,6 @@ public class MainSection {
     System.out.println("Drying Factor: "  + opDryFact);
     System.out.println("Fire Load Rating: " + opFireLoadRate);
     
-    
-    
-    	
-        
-    
     /* Gets the input data from the users */
     
     Scanner ip = new Scanner(System.in);
