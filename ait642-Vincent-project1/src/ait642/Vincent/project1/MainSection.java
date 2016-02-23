@@ -17,44 +17,7 @@ public class MainSection {
 	
 	public static void main(String[] args) {
 	
-	/** Sets up Arrays for calculations  */	
-		
-	ArrayList<Double> aTableValues =
-    new ArrayList<Double>();
-	aTableValues.add(-0.185900);
-	aTableValues.add(-.85900);
-	aTableValues.add(-.059660);
-	aTableValues.add(-.077373);
 	
-	ArrayList<Double> bTableValues =
-    new ArrayList<Double>();
-	bTableValues.add(30.0);
-	bTableValues.add(19.2);
-	bTableValues.add(13.8);
-	bTableValues.add(22.5);
-	
-	ArrayList<Double> cTableValues =
-    new ArrayList<Double>();
-	cTableValues.add(4.5);
-	cTableValues.add(12.5);
-	cTableValues.add(27.5);
-	
-	ArrayList<Double> dTableValues =
-	new ArrayList<Double>();
-	dTableValues.add(16.0);
-	dTableValues.add(10.0);
-	dTableValues.add(7.0);
-	dTableValues.add(5.0);
-	dTableValues.add(4.0);
-	dTableValues.add(3.0);
-	
-	/*  Prints out the Array Values to check Table Values */
-	
-	System.out.println(aTableValues.get(0));
-	System.out.println(bTableValues.get(1));
-	System.out.println(cTableValues.get(2));
-	System.out.println(dTableValues.get(3));
-
 	/*  Sets up variables for inputs  */
 	
     Double ipDry;
@@ -146,6 +109,45 @@ public class MainSection {
     		                         Double opFireLoadRate, Double opBuildUpIndex)
     {  
     	
+    	/** Sets up Arrays for calculations  */	
+		
+    	ArrayList<Double> aTableValues =
+        new ArrayList<Double>();
+    	aTableValues.add(-0.185900);
+    	aTableValues.add(-.85900);
+    	aTableValues.add(-.059660);
+    	aTableValues.add(-.077373);
+    	
+    	ArrayList<Double> bTableValues =
+        new ArrayList<Double>();
+    	bTableValues.add(30.0);
+    	bTableValues.add(19.2);
+    	bTableValues.add(13.8);
+    	bTableValues.add(22.5);
+    	
+    	ArrayList<Double> cTableValues =
+        new ArrayList<Double>();
+    	cTableValues.add(4.5);
+    	cTableValues.add(12.5);
+    	cTableValues.add(27.5);
+    	
+    	ArrayList<Double> dTableValues =
+    	new ArrayList<Double>();
+    	dTableValues.add(16.0);
+    	dTableValues.add(10.0);
+    	dTableValues.add(7.0);
+    	dTableValues.add(5.0);
+    	dTableValues.add(4.0);
+    	dTableValues.add(3.0);
+    	
+    	/*  Prints out the Array Values to check Table Values */
+    	
+    	System.out.println(aTableValues.get(0));
+    	System.out.println(bTableValues.get(1));
+    	System.out.println(cTableValues.get(2));
+    	System.out.println(dTableValues.get(3));
+
+    	
     Double calcDif = 0.0;	
       
     if (ipISnow > 0.0){
@@ -171,10 +173,52 @@ public class MainSection {
     }  
     else {
     	 calcDif = ipDry - ipWet;
+    	 int i;
     	 
-    }	
-	
-
+    	 for (i = 1; i <= 3; i++) {
+    		 if (calcDif-cTableValues.get(i-1) < 0){
+    	    	 opFineFuelMoist = bTableValues.get(i-1)* 
+    		        Math.exp(aTableValues.get(i-1)*calcDif);
+    	    	 i = 4;
+    	    	 }
+    		 else {
+    			 if ((i > 3)){
+    				 opFineFuelMoist = bTableValues.get(i)* 
+    		    		 Math.exp(aTableValues.get(i)*calcDif);
+    		    	    	 }
+    			 }	 
+    		 }
+    	  for (int j = 1; j <= 6; j++){
+    		  if (opFineFuelMoist - dTableValues.get(j-1) > 0){
+    			  opFineFuelMoist = (double) (j - 1);
+    		  }
+    		  else {
+    			  if ((j >= 6)){
+    				 opFineFuelMoist = 7.0; 
+    			  }
+    		  }
+    	  }
+    	  if ((opFineFuelMoist <= 1.0)){
+    		  opFineFuelMoist = 1.0;
+    	  }
+    	  else {
+    		  opFineFuelMoist = opFineFuelMoist + ((ipHerb -1.0) *5);
+    	  }
+    	  if ((ipPrecip - 0.1 > 0)){
+    		  opBuildUpIndex = -50.0 * Math.log(1.0 -(1.0 - Math.exp(-ipBUO/50.0)) *
+		              	Math.exp( -1.175 * (ipPrecip - 0.1)));
+    		  if (opBuildUpIndex >= 0){
+    			  opBuildUpIndex = 0.0;}
+    		  else {
+    			  opBuildUpIndex = opBuildUpIndex + opDryFact;
+    		  }
+    		  }
+    	  }
+    		  
+    	  
+    	  
+    	 }
+    	 
 //*  ends function    
     }
 //* ends main section
