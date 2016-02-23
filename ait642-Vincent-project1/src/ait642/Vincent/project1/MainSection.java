@@ -60,25 +60,22 @@ public class MainSection {
     Double ipDry;
     Double ipWet;
     Double ipISnow;
+    Double ipPrecip;
     Double ipWind;
     Double ipBUO;
     Double ipHerb;
     
     /* Sets up and Initializes output variables  */
     
-    Double opDryFact;
-    Double opFineFuelMoist;
-    Double opAdjFuelMoist;
-    Double opGrassSpreadIndex;
-    Double opTimberSpredIndex;
-    Double opFireLoadRate;
-    Double opBuildUpIndex;
+    Double opDryFact = 0.0;
+    Double opFineFuelMoist = 99.0;
+    Double opAdjFuelMoist = 99.0;
+    Double opGrassSpreadIndex = 0.0;
+    Double opTimberSpredIndex = 0.0;
+    Double opFireLoadRate = 0.0;
+    Double opBuildUpIndex =0.0;
     
-    opFineFuelMoist = 99.0;
-    opAdjFuelMoist = 99.0;
-    opDryFact = 0.0;
-    opFireLoadRate = 0.0;
-    
+        
     System.out.println("Fine Fuel Moisture: " + opFineFuelMoist);
     System.out.println("Adjusted Fuel Moisture: " + opAdjFuelMoist);
     System.out.println("Drying Factor: "  + opDryFact);
@@ -107,6 +104,11 @@ public class MainSection {
     System .out.println("You entered " + ipISnow + " for the amount of inches of snow");
     System.out.println();
     
+    System.out.println("Enter the Amount of Inches of Rain");
+    System.out.println();
+    ipPrecip = ip.nextDouble();
+    System .out.println("You entered " + ipPrecip + " for the amount of inches of rain");
+    System.out.println();
     
     System.out.println("Enter the Wind Speed");
     System.out.println();
@@ -130,18 +132,52 @@ public class MainSection {
     /* closes ip. scanner once all input is obtained */
     
       ip.close();
-    
-    
-    
-    
-    
-    
-    
-	
-	
-	
-	
+      
+      calcFireDanger(ipDry, ipWet, ipISnow, ipPrecip, ipWind, ipBUO, ipHerb,
+                     opDryFact, opFineFuelMoist, opAdjFuelMoist, opGrassSpreadIndex, 
+                     opTimberSpredIndex, opFireLoadRate, opBuildUpIndex);  
+      
 	}
+     
+    public static void calcFireDanger(Double ipDry, Double ipWet, Double ipISnow, Double ipPrecip,
+    		                         Double ipWind, Double ipBUO, Double ipHerb,
+    		                         Double opDryFact, Double opFineFuelMoist, Double opAdjFuelMoist,
+    		                         Double opGrassSpreadIndex, Double opTimberSpredIndex,
+    		                         Double opFireLoadRate, Double opBuildUpIndex)
+    {  
+    	
+    Double calcDif = 0.0;	
+      
+    if (ipISnow > 0.0){
+    	opGrassSpreadIndex = 0.0;
+    	opTimberSpredIndex = 0.0;
+    	
+       if (ipPrecip > 0.1){
+    		opBuildUpIndex = -50.0 * Math.log(1.0 -(1.0 - Math.exp(-ipBUO/50.0)) *
+    			              	Math.exp( -1.175 * (ipPrecip - 0.1)));
+    		 System.out.println("BUO: " + opBuildUpIndex);
+        		
+    		 if (opBuildUpIndex >= 0.1) {
+    			 return; 
+    		 }
+    		 else {	 
+    			 opBuildUpIndex = 0.0;
+    			 return;
+             }
+       }	 
+    	else {
+    		return;
+    	   	}
+    }  
+    else {
+    	 calcDif = ipDry - ipWet;
+    	 
+    }	
+	
+
+//*  ends function    
+    }
+//* ends main section
 }
 
 
