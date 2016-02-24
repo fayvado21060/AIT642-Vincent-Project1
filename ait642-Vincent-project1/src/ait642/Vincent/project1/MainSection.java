@@ -173,9 +173,8 @@ public class MainSection {
     }  
     else {
     	 calcDif = ipDry - ipWet;
-    	 int i;
     	 
-    	 for (i = 1; i <= 3; i++) {
+    	 for (int i = 1; i <= 3; i++) {
     		 if (calcDif-cTableValues.get(i-1) < 0){
     	    	 opFineFuelMoist = bTableValues.get(i-1)* 
     		        Math.exp(aTableValues.get(i-1)*calcDif);
@@ -213,12 +212,55 @@ public class MainSection {
     			  opBuildUpIndex = opBuildUpIndex + opDryFact;
     		  }
     		  }
+    	  opAdjFuelMoist = (0.9 * opFineFuelMoist) + .5 + (Math.exp(9.5)) * 
+    			  (opBuildUpIndex /50.0);
+    	  
+    	  if (opAdjFuelMoist >= 30.0){
+    		  if (opFineFuelMoist >= 30.0){
+    			  opGrassSpreadIndex = 1.0;
+    			  opTimberSpredIndex = 1.0;
+    			  return;
+    		  }
+    		  else {
+    			  opTimberSpredIndex = 1.0;
+    			  if (ipWind >= 14.0){
+    				  opGrassSpreadIndex = (0.00918 * (ipWind + 14) *
+    						  Math.pow((33.0 - opFineFuelMoist), 1.65) -3.0);
+    				  if (opGrassSpreadIndex > 99.0) {
+    					  opGrassSpreadIndex = 99.0;
+    				  }
+    				  else {
+    					 if (opTimberSpredIndex > 0.0) {    				
+    					     if (opBuildUpIndex > 0.0){
+    							 opFireLoadRate = (1.75 * Math.log10(opTimberSpredIndex) +
+    										  0.32 * Math.log10(opBuildUpIndex) - 1.640);
+    								  
+    								if (opFireLoadRate > 0.0){
+    									  opFireLoadRate = Math.pow(opFireLoadRate, 10.0);
+    								  }
+    								  else {
+    									  opFireLoadRate = 0.0;
+    									  return;
+    								       }
+    								 }
+    							else {
+    							 return;
+    								 }
+    					 } 
+    					 
+    				  else {
+    					  return;
+    				  }
+    		          }
+    			   }
+    			  else {
+    				  opGrassSpreadIndex = (0.01312 * (ipWind +6) * 
+    						  Math.pow((33.0 - opFineFuelMoist), 1.65) -3.0);
+    			  }
+    			  }
+    		   }
     	  }
-    		  
-    	  
-    	  
-    	 }
-    	 
+      
 //*  ends function    
     }
 //* ends main section
