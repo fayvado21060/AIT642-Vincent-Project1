@@ -259,6 +259,38 @@ public class MainSection {
     			  }
     			  }
     		   }
+    	  else {
+    		  if (ipWind >= 14.0){
+    			  opTimberSpredIndex = (0.01312 * (ipWind +6) * 
+						  Math.pow((33.0 - opAdjFuelMoist), 1.65) -3.0);
+    			  opGrassSpreadIndex = (0.00918 * (ipWind + 14) *
+						  Math.pow((33.0 - opFineFuelMoist), 1.65) -3.0);
+    			  if (opGrassSpreadIndex > 99.00){
+    				  opGrassSpreadIndex = 99.00;
+    				  if (opTimberSpredIndex > 99.00){
+    					  opTimberSpredIndex = 99.00;
+    				  }
+    				  else {
+    					  if ((opTimberSpredIndex < 0.0) 
+    						  & (opBuildUpIndex < 0.0)) {
+    						  return;
+    					  }	  
+    				     else {
+    				    	 opFireLoadRate = (1.75 * Math.log10(opTimberSpredIndex) +
+									  0.32 * Math.log10(opBuildUpIndex) - 1.640);
+    				    	 if (opFireLoadRate <= 0.0){
+    				    		 opFireLoadRate = 0.0;
+    				    		 return;
+    				    	 }
+    				    	 else {
+    				    		 opFireLoadRate = Math.pow(10,opFireLoadRate);
+    				    		 return;
+    				    	 }
+    					  }
+    				  }
+    			  }
+    		  }
+    	  }
     	  }
       
 //*  ends function    
