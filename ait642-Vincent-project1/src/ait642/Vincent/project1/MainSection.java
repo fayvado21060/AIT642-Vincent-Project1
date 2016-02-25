@@ -1,3 +1,6 @@
+/*
+ * 
+ */
 package ait642.Vincent.project1;
 /** 
  * AIT642 Vincent Project1
@@ -13,6 +16,11 @@ import java.util.Scanner;
 
 public class MainSection {
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 	
 	
