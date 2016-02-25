@@ -1,0 +1,18 @@
+Project 1 Task #1
+Bonita Faye Vincent
+Spring 2016
+AIT642
+
+
+Lessons learn from the installation of Eclipse, Eclipse EGit, and Javadoc
+Installing Eclipse was not a difficult task. I forgot that I did not have Java 
+installed on my computer and had to install that before I could get Eclipse to open up.  
+After installing Java, I did have some problems opening Eclipse and I think it was because
+of where it wanted to place the workspace.  Once I had it install I tried out several “Hello World” programs.
+I read the documentation which step me through creating simple programs to run and illustrated 
+the different features of Eclipse.  I installed EGit desktop but was not sure how to get it
+ to work with the online repository.   I will continue with the process hoping to gain a better 
+ understanding of EGit as I step through the different tasks.  
+ 
+ Javadoc was also easy to install and just as easy to understand how to use by right clicking on item 
+ to document.  Not sure of all of the features but I have the basic function down.

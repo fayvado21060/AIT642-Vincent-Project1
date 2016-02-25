@@ -14,6 +14,10 @@ package ait642.Vincent.project1;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainSection.
+ */
 public class MainSection {
 	
 	/**
@@ -114,7 +118,19 @@ public class MainSection {
     //*  Function to calculate Fire Danger   		                        
     //*		                          
 	
-	 public static void calcFireDanger(Double ipDry, Double ipWet, Double ipISnow, Double ipPrecip,
+	 /**
+     * Calc fire danger.
+     *
+     * @param ipDry the ip dry
+     * @param ipWet the ip wet
+     * @param ipISnow the ip i snow
+     * @param ipPrecip the ip precip
+     * @param ipWind the ip wind
+     * @param ipBUO the ip buo
+     * @param ipHerb the ip herb
+     * @param calcValues the calc values
+     */
+    public static void calcFireDanger(Double ipDry, Double ipWet, Double ipISnow, Double ipPrecip,
     		                         Double ipWind, Double ipBUO, Double ipHerb, ArrayList<Double> calcValues)
     {  
     	
