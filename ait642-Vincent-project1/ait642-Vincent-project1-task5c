@@ -1,0 +1,30 @@
+Lessons learn from the Reengineering of the Fortran: Calculation of Fire Danger Subprogram
+
+
+First step in reengineering the Calculation of Fire Danger Subprogram was to understand the program.
+In order to understand the program, it was necessary to research the Fortran syntax.  
+After getting the basic understanding of the syntax especially the IF statement (thanks for the tip giving in class),
+I carefully step through the code.   I had to do this several times with the small text and small knowledge of the
+Fortran software language.  The comments that within the programs were very helpful but were not consistence with 
+the write up.  Also the discussions in class were very helpful.  The suggestion of using the line numbers was very 
+helpfully also.  As I wrote my pseudo I place the corresponding line number next to my code.  This keep me from 
+getting too lost.  
+
+Once I completed my code and recheck it by tracing and comparing it to the Fortran code, I was ready to code in Java.
+Again, I had to tackle a learning curve of re-learning Java again.  It has been a while since I have written Java 
+code so I had an idea of what I wanted to do; I just needed to know how to do it in Java.  Creating arrays, 
+manipulating the data into and from the array proved to be a challenge also.  So I search the internet for answers. 
+I used the websites Stackoverflow and Programming Simplified and some very old text books.  I learned how to create 
+a function, if statement syntax, how to pass multiple arguments using an array and the importance of the placement 
+semi colons and brackets in Java.  Eclipse help a lot with this once I understood what it was trying to tell me.  
+Using Eclipse was not too hard.  
+
+I did have a problem with GitHub at first.  It took me a while to get the commit correct.  
+I when online and watches a few YouTube videos to figure it out.  I still have not set up the HEAD and 
+I think this is why I have to put my id and password in each time I commit.   Once I got the commit down, 
+I created my branch.   The problem was not doing the commit but remembering to create a new branch to make the 
+commit useful.  I did find that I got so messed up with my brackets and because I did not do my branches as often 
+as I should, I had to go back to almost the beginning and reenter my code.  After this, I used branches and commits 
+more frequently.  At the end I did my merge and was more comfortable with process.  In the end I was able to run 
+my code and get values displayed to the console.  The last task of posting my text documents I am still working on.  
+So if you do not find this in my project it will be on blackboard…Sorry  
